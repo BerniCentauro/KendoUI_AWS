@@ -33,7 +33,7 @@
     <Compile Include="ApiServices.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Scripts\CondominioCreateFunction.py">
+    <Compile Include="Scripts\CondominioCreateTable.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

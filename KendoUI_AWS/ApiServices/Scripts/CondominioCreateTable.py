@@ -1,10 +1,10 @@
-import boto3
+﻿import boto3
 import traceback
 
-class CreateTableCondominio:
+class UserTable:
 
     #Metodo para crear la tabla usuarios.
-    def CondominioCreateTable():
+    def CondominioCreateTableFunction():
 
         dynamodb = boto3.resource('dynamodb', region_name='us-west-2', endpoint_url="http://localhost:8000")
 

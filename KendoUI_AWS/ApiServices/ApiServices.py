@@ -1,5 +1,5 @@
-import CondominioCreateFunction
+﻿import CondominioCreateTable
 
-CondoTable = CondominioCreateFunction.CreateTableCondominio
+CondoTable = CondominioCreateTable.UserTable
 
 CondoTable.CondominioCreateTable()
