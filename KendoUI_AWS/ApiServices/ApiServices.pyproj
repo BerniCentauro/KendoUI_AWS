@@ -6,7 +6,7 @@
     <ProjectGuid>3062b26d-f478-4c60-b023-731314143768</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>ApiServices.py</StartupFile>
-    <SearchPath>Scripts\;Services\;Functions\</SearchPath>
+    <SearchPath>Scripts\;Services\;Functions\User\;Functions\Condo\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ApiServices</Name>
@@ -26,6 +26,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Functions\" />
+    <Folder Include="Functions\Condo\" />
+    <Folder Include="Functions\User\" />
     <Folder Include="Scripts\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -33,25 +35,26 @@
     <Compile Include="ApiServices.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Functions\UserDeleteFunction.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Functions\UserGetAllFunction.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Functions\UserGetByIdFunction.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Functions\UserInsertFunction.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Functions\UserUpdateFunction.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Functions\Condo\CondoDeleteFunction.py" />
+    <Compile Include="Functions\Condo\CondoGetAllFunction.py" />
+    <Compile Include="Functions\Condo\CondoGetByIdFunction.py" />
+    <Compile Include="Functions\Condo\CondoInsertFunction.py" />
+    <Compile Include="Functions\Condo\CondoUpdateFunction.py" />
+    <Compile Include="Functions\User\UserDeleteFunction.py" />
+    <Compile Include="Functions\User\UserGetAllFunction.py" />
+    <Compile Include="Functions\User\UserGetByIdFunction.py" />
+    <Compile Include="Functions\User\UserInsertFunction.py" />
+    <Compile Include="Functions\User\UserUpdateFunction.py" />
     <Compile Include="Scripts\UserTable.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\CondoServices.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Services\UserServices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\CondoTable.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
