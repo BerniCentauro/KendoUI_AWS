@@ -1,0 +1,150 @@
+from flask import Flask, jsonify
+from flask import abort
+from flask import make_response
+from flask import request
+from flask import url_for
+from flask_httpauth import HTTPBasicAuth
+import traceback
+
+import UserInsertFunction
+import UserGetAllFunction
+import UserGetByIdFunction
+
+class UserServices:
+
+    def runServices():
+
+        #Instanciar flask
+        app = Flask(__name__)
+
+        #Insertar un usuario nuevo
+        @app.route('/api/user', methods=['POST'])
+        def insertNewUser():
+
+            db = UserInsertFunction
+
+            try:
+
+                if not request.json or not 'Id' in request.json:
+                    abort(400)
+
+                event = {
+                    'Id': request.json['Id'],
+                    'Email' : request.json['Email'],
+                    'Password' : request.json['Password'],
+                    'Username' : request.json['Username'],
+                    'Phone' : request.json['Phone'],
+                    'Identification' : request.json['Identification']
+                    }
+
+                response = db.InsertNewUser(event, "")
+
+            except Exception:
+                print("Error - Metodo InsertNewUser")
+                traceback.print_exc()
+                return jsonify({"Resultado": "No se ha podido completar la transaccion"}), 201
+
+            else:
+                return jsonify({"Resultado" : "Datos ingresados correctamente"}), 201
+
+        #Obtener todos los usuarios
+        @app.route("/api/user", methods=["GET"])
+        def getAllUsers():
+
+            db = UserGetAllFunction
+
+            try:
+
+                response = db.GetAllUsers("", "")
+
+            except Exception:
+                print("Error - Metodo GetAllUsers")
+                traceback.print_exc()
+                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+
+            return jsonify({"Users" : response})
+
+        #Obtener un usuario por Id
+        @app.route('/api/user/<string:id>', methods=['GET'])
+        def getById(id):
+
+            db = UserGetByIdFunction
+
+            try:
+
+                event = { "Id" : id }
+                response = db.GetById(event, "")
+
+            except Exception:
+                print("Error - Metodo GetById")
+                traceback.print_exc()
+                return jsonify({'Error': 'No se ha podido completar la transaccion'}), 201
+
+            return jsonify({"User" : response})
+
+        ##Actualizar un usuario
+        #@app.route('/api/users/<string:id>', methods=['PUT'])
+        #def updateUser(id):
+
+        #    try:
+
+        #        if not request.json:
+        #            abort(400)
+        #        if "Name" in request.json and type(request.json["Name"]) !=
+        #        str:
+        #            abort(400)
+        #        if "Lastname" in request.json and
+        #        type(request.json["Lastname"]) is not str:
+        #            abort(400)
+        #        if "Email" in request.json and type(request.json["Email"]) is
+        #        not str:
+        #            abort(400)
+
+        #        event = {
+        #            "Name" : request.json.get("Name"),
+        #            "Lastname" : request.json.get("Lastname"),
+        #            "Email" : request.json.get("Email"),
+        #            "Id" : id
+        #            }
+
+        #        response = db.updateUser(event)
+
+        #    except Exception:
+        #        print("Error - Metodo updateUser")
+        #        traceback.print_exc()
+        #        return jsonify({'Error': 'No se ha podido completar la
+        #        transaccion'}), 201
+
+        #    else:
+        #        return jsonify({'User': response}), 201
+
+        ##Eliminar un usuario
+        #@app.route('/api/users/<string:id>', methods=['DELETE'])
+        #def deleteUser(id):
+
+        #    try:
+        #        event = {"Id" : id}
+        #        response = db.deleteUser(event)
+
+        #    except Exception:
+        #        print("Error - deleteUser")
+        #        traceback.print_exc()
+        #        return jsonify({'Error': 'No se ha podido completar la
+        #        transaccion'}), 201
+
+        #    if (response == True):
+        #        return jsonify({'Exito': 'Transaccion realizada
+        #        correctamente'}), 201
+
+        #    else:
+        #        return jsonify({'Error': 'No se ha podido completar la
+        #        transaccion'}), 201
+
+        #Manejo de errores
+        @app.errorhandler(404)
+        def not_found(error):
+            return make_response(jsonify({"Error": "Datos no encontrados"}), 404)
+
+        #Correr el servidor
+        if __name__ == "UserServices":
+            app.run(debug=True)

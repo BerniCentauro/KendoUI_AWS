@@ -6,7 +6,7 @@
     <ProjectGuid>3062b26d-f478-4c60-b023-731314143768</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>ApiServices.py</StartupFile>
-    <SearchPath>Scripts\</SearchPath>
+    <SearchPath>Scripts\;Services\;Functions\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ApiServices</Name>
@@ -33,7 +33,19 @@
     <Compile Include="ApiServices.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Functions\UserGetAllFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserGetByIdFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserInsertFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Scripts\UserTable.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\UserServices.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

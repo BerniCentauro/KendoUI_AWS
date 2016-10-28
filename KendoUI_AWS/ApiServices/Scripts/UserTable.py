@@ -1,4 +1,4 @@
-import boto3
+﻿import boto3
 import traceback
 
 class UserTable:
@@ -32,23 +32,35 @@ class UserTable:
             print(table.creation_date_time)
             print("Tabla creada correctamente")
 
-    #def InsertData():
+    #Método para precargar información dentro de la tabla.
+    def InsertData():
 
-    #    dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
-    #    table = dynamodb.Table("User")
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
+        table = dynamodb.Table('User')
 
-    #    try:
-    #        table.put_item(Item = { 
-    #                "Id": event["Id"],
-    #                "Email" : event["Name"],
-    #                "Lastname" : event["Lastname"],
-    #                "Email" : event["Email"]
-    #                })
+        try:
+            table.put_item(Item = { 
+                    'Id': '1',
+                    'Email' : 'user1@test.com',
+                    'Password' : '12345',
+                    'Username' : 'Test user 1',
+                    'Phone' : '555-555',
+                    'Identification' : '123'
+                    })
 
-    #    except Exception:
-    #        print("Ha ocurrido un error")
-    #        traceback.print_exc()
+            table.put_item(Item = { 
+                    'Id': '2',
+                    'Email' : 'user2@test.com',
+                    'Password' : '12345',
+                    'Username' : 'Test user 2',
+                    'Phone' : '555-555',
+                    'Identification' : '123'
+                    })
 
-    #    else:
-    #        print("Datos ingresados correctamente")
+        except Exception:
+            print("Ha ocurrido un error")
+            traceback.print_exc()
+
+        else:
+            print("Datos ingresados correctamente")
         
