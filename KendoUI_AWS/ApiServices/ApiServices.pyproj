@@ -5,10 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3062b26d-f478-4c60-b023-731314143768</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <StartupFile>ApiServices.py</StartupFile>
+    <SearchPath>Functions\;Scripts\;Services\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ApiServices</Name>
@@ -32,6 +30,9 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiServices.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Functions\FincaFilialDeleteFunction.py" />
     <Compile Include="Functions\FincaFilialGetAllFunction.py" />
     <Compile Include="Functions\FincaFilialGetByIdFunction.py" />

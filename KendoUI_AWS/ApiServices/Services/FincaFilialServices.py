@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+﻿from flask import Flask, jsonify
 from flask import abort
 from flask import make_response
 from flask import request
@@ -136,5 +136,5 @@ class FincaFilialServices:
             return make_response(jsonify({"Error": "Datos no encontrados"}), 404)
 
         #Correr el servidor
-        if __name__ == "UserServices":
+        if __name__ == "FincaFilialServices":
             app.run(debug=True)
