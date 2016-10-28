@@ -1,34 +1,27 @@
-import UserTable
+﻿import UserTable
 import UserServices
 
-import CondominioCreateTable
+import CondoTable
+import CondoServices
 
 #----------Tabla Usuario----------#
-#Paso 1 - Inicializar script para la base de datos
+#Paso 1 - Crear tabla y precargar la información:
 #userTable = UserTable.UserTable
-
-#Paso 2 - Crear tabla:
 #userTable.CreateTable()
-
-#Paso 3 - Precargar usuarios en la tabla:
 #userTable.InsertData()
 
-#Paso 4 - Iniciar servicios:
-userServices = UserServices.UserServices
-userServices.runServices()
+#Paso 2 - Iniciar servicios:
+#userServices = UserServices.UserServices
+#userServices.runServices()
 
 #----------Tabla Condominio----------#
-#Paso 1 - Inicializar script para la base de datos
-CondoTable = CondominioCreateTable.CondominioCreateTable
+#Paso 1 - Crear tabla y precargar la información:
+#condoTable = CondoTable.CondoTable
+#condoTable.CreateTable()
+#condoTable.InsertData()
 
-#Paso 2 - Crear tabla:
-CondoTable.CondominioCreateTableFunction()
-
-#Paso 3 - Precargar usuarios en la tabla:
-#userTable.InsertData()
-
-#Paso 4 - Iniciar servicios:
-userServices = UserServices.UserServices
-userServices.runServices()
+#Paso 2 - Iniciar servicios:
+condoServices = CondoServices.CondoServices
+condoServices.runServices()
 
 #----------Tabla Finca Filial----------#

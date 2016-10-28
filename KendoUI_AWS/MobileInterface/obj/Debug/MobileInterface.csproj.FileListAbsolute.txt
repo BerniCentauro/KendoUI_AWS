@@ -1,0 +1,6 @@
+C:\CentauroSolutions\Sources\Workspaces\KendoUI_AWS\KendoUI_AWS\MobileInterface\bin\MobileInterface.dll.config
+C:\CentauroSolutions\Sources\Workspaces\KendoUI_AWS\KendoUI_AWS\MobileInterface\bin\MobileInterface.dll
+C:\CentauroSolutions\Sources\Workspaces\KendoUI_AWS\KendoUI_AWS\MobileInterface\bin\MobileInterface.pdb
+C:\CentauroSolutions\Sources\Workspaces\KendoUI_AWS\KendoUI_AWS\MobileInterface\obj\Debug\MobileInterface.csprojResolveAssemblyReference.cache
+C:\CentauroSolutions\Sources\Workspaces\KendoUI_AWS\KendoUI_AWS\MobileInterface\obj\Debug\MobileInterface.dll
+C:\CentauroSolutions\Sources\Workspaces\KendoUI_AWS\KendoUI_AWS\MobileInterface\obj\Debug\MobileInterface.pdb
