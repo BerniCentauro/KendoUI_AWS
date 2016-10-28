@@ -32,7 +32,15 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\FincaFilialDeleteFunction.py" />
+    <Compile Include="Functions\FincaFilialGetAllFunction.py" />
+    <Compile Include="Functions\FincaFilialGetByIdFunction.py" />
+    <Compile Include="Functions\FincaFilialInsertFunction.py" />
+    <Compile Include="Functions\FincaFilialUpdateFunction.py" />
     <Compile Include="Scripts\FincaFilialTable.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\FincaFilialServices.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
