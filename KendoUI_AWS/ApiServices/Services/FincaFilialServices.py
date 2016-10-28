@@ -11,6 +11,7 @@ import FincaFilialGetAllFunction
 import FincaFilialGetByIdFunction
 import FincaFilialInsertFunction
 import FincaFilialUpdateFunction
+import FincaFilialGetAllFunction
 
 class FincaFilialServices:
 
@@ -53,10 +54,10 @@ class FincaFilialServices:
         def GetAllFincaFilial():
 
             db = GetAllFincaFilial
-
+            
             try:
-
-                response = db.GetAllFincaFilial("", "")
+                
+                response = FincaFilialGetAllFunction.GetAllFincaFilial("", "")
 
             except Exception:
                 print("Error - Metodo GetAllFincaFilial")
@@ -66,15 +67,15 @@ class FincaFilialServices:
             return jsonify({"FincaFilial" : response})
 
         #Obtener una finca filial por Id
-        @app.route('/api/fincaFilial<string:id>', methods=['GET'])
+        @app.route('/api/fincaFilial/<string:id>', methods=['GET'])
         def GetById(id):
 
-            db = GetFincaFilialById
-
+            #db = GetFincaFilialById
+            return jsonify({"FincaFilial" : "holi"})
             try:
 
                 event = { "Id" : id }
-                response = db.GetFincaFilialById(event, "")
+                response = FincaFilialGetAllFunction.GetFincaFilialById(event, "")
 
             except Exception:
                 print("Error - Metodo GetById")
