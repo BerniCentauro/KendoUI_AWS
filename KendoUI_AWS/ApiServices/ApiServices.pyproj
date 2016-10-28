@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,7 +6,7 @@
     <ProjectGuid>3062b26d-f478-4c60-b023-731314143768</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>ApiServices.py</StartupFile>
-    <SearchPath>Scripts\</SearchPath>
+    <SearchPath>Scripts\;Services\;Functions\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ApiServices</Name>
@@ -31,6 +31,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiServices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserDeleteFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserGetAllFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserGetByIdFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserInsertFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserUpdateFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\UserTable.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\UserServices.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Scripts\CondominioCreateTable.py">
