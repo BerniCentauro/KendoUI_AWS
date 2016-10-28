@@ -9,6 +9,8 @@ import traceback
 import UserInsertFunction
 import UserGetAllFunction
 import UserGetByIdFunction
+import UserUpdateFunction
+import UserDeleteFunction
 
 class UserServices:
 
@@ -19,7 +21,7 @@ class UserServices:
 
         #Insertar un usuario nuevo
         @app.route('/api/user', methods=['POST'])
-        def insertNewUser():
+        def InsertNewUser():
 
             db = UserInsertFunction
 
@@ -49,7 +51,7 @@ class UserServices:
 
         #Obtener todos los usuarios
         @app.route("/api/user", methods=["GET"])
-        def getAllUsers():
+        def GetAllUsers():
 
             db = UserGetAllFunction
 
@@ -66,14 +68,14 @@ class UserServices:
 
         #Obtener un usuario por Id
         @app.route('/api/user/<string:id>', methods=['GET'])
-        def getById(id):
+        def GetById(id):
 
             db = UserGetByIdFunction
 
             try:
 
                 event = { "Id" : id }
-                response = db.GetById(event, "")
+                response = db.GetUserById(event, "")
 
             except Exception:
                 print("Error - Metodo GetById")
@@ -82,63 +84,53 @@ class UserServices:
 
             return jsonify({"User" : response})
 
-        ##Actualizar un usuario
-        #@app.route('/api/users/<string:id>', methods=['PUT'])
-        #def updateUser(id):
+        #Actualizar un usuario
+        @app.route('/api/user/<string:id>', methods=['PUT'])
+        def UpdateUser(id):
 
-        #    try:
+            db = UserUpdateFunction
 
-        #        if not request.json:
-        #            abort(400)
-        #        if "Name" in request.json and type(request.json["Name"]) !=
-        #        str:
-        #            abort(400)
-        #        if "Lastname" in request.json and
-        #        type(request.json["Lastname"]) is not str:
-        #            abort(400)
-        #        if "Email" in request.json and type(request.json["Email"]) is
-        #        not str:
-        #            abort(400)
+            try:
 
-        #        event = {
-        #            "Name" : request.json.get("Name"),
-        #            "Lastname" : request.json.get("Lastname"),
-        #            "Email" : request.json.get("Email"),
-        #            "Id" : id
-        #            }
+                if not request.json:
+                    abort(400)
 
-        #        response = db.updateUser(event)
+                event = {
+                    'Id': id,
+                    'Email' : request.json['Email'],
+                    'Password' : request.json['Password'],
+                    'Username' : request.json['Username'],
+                    'Phone' : request.json['Phone'],
+                    'Identification' : request.json['Identification']
+                    }
 
-        #    except Exception:
-        #        print("Error - Metodo updateUser")
-        #        traceback.print_exc()
-        #        return jsonify({'Error': 'No se ha podido completar la
-        #        transaccion'}), 201
+                response = db.UpdateUser(event, "")
 
-        #    else:
-        #        return jsonify({'User': response}), 201
+            except Exception:
+                print("Error - Metodo UpdateUser")
+                traceback.print_exc()
+                return jsonify({'Error': 'No se ha podido completar la transaccion'}), 201
 
-        ##Eliminar un usuario
-        #@app.route('/api/users/<string:id>', methods=['DELETE'])
-        #def deleteUser(id):
+            else:
+                return jsonify({'User': response}), 201
 
-        #    try:
-        #        event = {"Id" : id}
-        #        response = db.deleteUser(event)
+        #Eliminar un usuario
+        @app.route('/api/user/<string:id>', methods=['DELETE'])
+        def DeleteUser(id):
 
-        #    except Exception:
-        #        print("Error - deleteUser")
-        #        traceback.print_exc()
-        #        return jsonify({'Error': 'No se ha podido completar la
-        #        transaccion'}), 201
+            db = UserDeleteFunction
 
-        #    if (response == True):
-        #        return jsonify({'Exito': 'Transaccion realizada
-        #        correctamente'}), 201
+            try:
+                event = {"Id" : id}
+                response = db.DeleteUserById(event, "")
 
-        #    else:
-        #        return jsonify({'Error': 'No se ha podido completar la
-        #        transaccion'}), 201
+            except Exception:
+                print("Error - Metodo DeleteUser")
+                traceback.print_exc()
+                return jsonify({'Error': 'No se ha podido completar la transaccion'}), 201
+
+            else:
+                return jsonify({"Resultado" : "Usuario eliminado correctamente"}), 201
 
         #Manejo de errores
         @app.errorhandler(404)

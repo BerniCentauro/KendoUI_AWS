@@ -33,6 +33,9 @@
     <Compile Include="ApiServices.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Functions\UserDeleteFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Functions\UserGetAllFunction.py">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Functions\UserInsertFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\UserUpdateFunction.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Scripts\UserTable.py">
