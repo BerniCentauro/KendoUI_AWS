@@ -1,11 +1,11 @@
-import boto3
+﻿import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
 
 def UpdateUser(event, context):
 
-    dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
-    table = dynamodb.Table('User')
+    dynamodb = boto3.resource("dynamodb", region_name="us-east-1", endpoint_url="http://localhost:8000")
+    table = dynamodb.Table("User")
     
     try:
 
@@ -21,7 +21,7 @@ def UpdateUser(event, context):
             ReturnValues = "UPDATED_NEW")
         
     except ClientError as e:
-        print(e.response['Error']['Message'])
+        print(e.response["Error"]["Message"])
         return ({"Resultado" : "Ha ocurrido un error"})
         
     else:
