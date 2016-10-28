@@ -24,7 +24,7 @@ class FincaFilialServices:
         @app.route('/api/fincaFilial', methods=['POST'])
         def InsertNewFincaFilial():
 
-            db = InsertNewFincaFilial
+            db = FincaFilialInsertFunction
 
             try:
 
@@ -53,11 +53,11 @@ class FincaFilialServices:
         @app.route('/api/fincaFilial', methods=['GET'])
         def GetAllFincaFilial():
 
-            db = GetAllFincaFilial
+            db = FincaFilialGetAllFunction
             
             try:
                 
-                response = FincaFilialGetAllFunction.GetAllFincaFilial("", "")
+                response = db.GetAllFincaFilial("", "")
 
             except Exception:
                 print("Error - Metodo GetAllFincaFilial")
@@ -72,10 +72,13 @@ class FincaFilialServices:
 
             #db = GetFincaFilialById
             return jsonify({"FincaFilial" : "holi"})
+
+            db = FincaFilialGetAllFunction
+
             try:
 
                 event = { "Id" : id }
-                response = FincaFilialGetAllFunction.GetFincaFilialById(event, "")
+                response = db.GetFincaFilialById(event, "")
 
             except Exception:
                 print("Error - Metodo GetById")
@@ -88,7 +91,7 @@ class FincaFilialServices:
         @app.route('/api/fincaFilial/<string:id>', methods=['PUT'])
         def UpdateFincaFilial(id):
 
-            db = UpdateFincaFilial
+            db = FincaFilialUpdateFunction
 
             try:
 
@@ -117,7 +120,7 @@ class FincaFilialServices:
         @app.route('/api/fincaFilial/<string:id>', methods=['DELETE'])
         def DeleteFincaFilial(id):
 
-            db = DeleteFincaFilialById
+            db = FincaFilialDeleteFunction
 
             try:
                 event = {"Id" : id}
