@@ -1,7 +1,7 @@
 ﻿import boto3
 import traceback
 
-class UserTable:
+class CondominioCreateTable:
 
     #Metodo para crear la tabla usuarios.
     def CondominioCreateTableFunction():
