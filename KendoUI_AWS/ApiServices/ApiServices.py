@@ -1,7 +1,7 @@
 ﻿import UserTable
 import UserServices
 
-#----------Tabla Usuarios----------#
+#----------Tabla Usuario----------#
 #Paso 1 - Inicializar script para la base de datos
 #userTable = UserTable.UserTable
 
@@ -14,3 +14,7 @@ import UserServices
 #Paso 4 - Iniciar servicios:
 userServices = UserServices.UserServices
 userServices.runServices()
+
+#----------Tabla Condominio----------#
+
+#----------Tabla Finca Filial----------#

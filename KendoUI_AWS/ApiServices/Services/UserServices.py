@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+﻿from flask import Flask, jsonify
 from flask import abort
 from flask import make_response
 from flask import request
@@ -50,7 +50,7 @@ class UserServices:
                 return jsonify({"Resultado" : "Datos ingresados correctamente"}), 201
 
         #Obtener todos los usuarios
-        @app.route("/api/user", methods=["GET"])
+        @app.route('/api/user', methods=['GET'])
         def GetAllUsers():
 
             db = UserGetAllFunction
@@ -80,7 +80,7 @@ class UserServices:
             except Exception:
                 print("Error - Metodo GetById")
                 traceback.print_exc()
-                return jsonify({'Error': 'No se ha podido completar la transaccion'}), 201
+                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
             return jsonify({"User" : response})
 
@@ -109,10 +109,10 @@ class UserServices:
             except Exception:
                 print("Error - Metodo UpdateUser")
                 traceback.print_exc()
-                return jsonify({'Error': 'No se ha podido completar la transaccion'}), 201
+                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
             else:
-                return jsonify({'User': response}), 201
+                return jsonify({"User": response}), 201
 
         #Eliminar un usuario
         @app.route('/api/user/<string:id>', methods=['DELETE'])
@@ -127,7 +127,7 @@ class UserServices:
             except Exception:
                 print("Error - Metodo DeleteUser")
                 traceback.print_exc()
-                return jsonify({'Error': 'No se ha podido completar la transaccion'}), 201
+                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
             else:
                 return jsonify({"Resultado" : "Usuario eliminado correctamente"}), 201
