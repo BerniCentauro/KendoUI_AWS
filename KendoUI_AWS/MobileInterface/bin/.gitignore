@@ -1,2 +1,3 @@
 /MobileInterface.dll
 /MobileInterface.pdb
+*.dll.config
