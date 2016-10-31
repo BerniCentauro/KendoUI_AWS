@@ -51,6 +51,9 @@
     <Compile Include="Services\CondoServices.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\MainServices.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Services\UserServices.py">
       <SubType>Code</SubType>
     </Compile>
