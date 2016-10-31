@@ -1,9 +1,9 @@
-from flask import Flask, jsonify
+﻿from flask import Flask, jsonify
 from flask import abort
 from flask import make_response
 from flask import request
 from flask import url_for
-from flask_httpauth import HTTPBasicAuth
+from flask import Blueprint
 import traceback
 
 import CondoInsertFunction
@@ -12,127 +12,113 @@ import CondoGetByIdFunction
 import CondoUpdateFunction
 import CondoDeleteFunction
 
-class CondoServices:
+condoApi = Blueprint("condoApi", __name__)
 
-    def runServices():
+#Insertar un condominio nuevo
+@condoApi.route('/api/condo', methods=['POST'])
+def InsertNewCondo():
 
-        #Instanciar flask
-        app = Flask(__name__)
+    db = CondoInsertFunction
 
-        #Insertar un condominio nuevo
-        @app.route('/api/condo', methods=['POST'])
-        def InsertNewCondo():
+    try:
 
-            db = CondoInsertFunction
+        if not request.json or not 'Id' in request.json:
+            abort(400)
 
-            try:
+        event = {
+            'Id': request.json['Id'],
+            'Description' : request.json['Description'],
+            'Logo' : request.json['Logo'],
+            'Url' : request.json['Url']
+            }
 
-                if not request.json or not 'Id' in request.json:
-                    abort(400)
+        response = db.InsertNewCondo(event, "")
 
-                event = {
-                    'Id': request.json['Id'],
-                    'Description' : request.json['Description'],
-                    'Logo' : request.json['Logo'],
-                    'Url' : request.json['Url']
-                    }
+    except Exception:
+        print("Error - Metodo InsertNewCondo")
+        traceback.print_exc()
+        return jsonify({"Resultado": "No se ha podido completar la transaccion"}), 201
 
-                response = db.InsertNewCondo(event, "")
+    else:
+        return jsonify({"Resultado" : "Datos ingresados correctamente"}), 201
 
-            except Exception:
-                print("Error - Metodo InsertNewCondo")
-                traceback.print_exc()
-                return jsonify({"Resultado": "No se ha podido completar la transaccion"}), 201
+#Obtener todos los condominios
+@condoApi.route('/api/condo', methods=['GET'])
+def GetAllCondos():
 
-            else:
-                return jsonify({"Resultado" : "Datos ingresados correctamente"}), 201
+    db = CondoGetAllFunction
 
-        #Obtener todos los condominios
-        @app.route('/api/condo', methods=['GET'])
-        def GetAllCondos():
+    try:
 
-            db = CondoGetAllFunction
+        response = db.GetAllCondos("", "")
 
-            try:
+    except Exception:
+        print("Error - Metodo GetAllCondos")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-                response = db.GetAllCondos("", "")
+    return jsonify({"Condos" : response})
 
-            except Exception:
-                print("Error - Metodo GetAllCondos")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+#Obtener un condominio por Id
+@condoApi.route('/api/condo/<string:id>', methods=['GET'])
+def GetById(id):
 
-            return jsonify({"Condos" : response})
+    db = CondoGetByIdFunction
 
-        #Obtener un condominio por Id
-        @app.route('/api/condo/<string:id>', methods=['GET'])
-        def GetById(id):
+    try:
 
-            db = CondoGetByIdFunction
+        event = { "Id" : id }
+        response = db.GetCondoById(event, "")
 
-            try:
+    except Exception:
+        print("Error - Metodo GetById")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-                event = { "Id" : id }
-                response = db.GetCondoById(event, "")
+    return jsonify({"Condo" : response})
 
-            except Exception:
-                print("Error - Metodo GetById")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+#Actualizar un usuario
+@condoApi.route('/api/condo/<string:id>', methods=['PUT'])
+def UpdateCondo(id):
 
-            return jsonify({"Condo" : response})
+    db = CondoUpdateFunction
 
-        #Actualizar un usuario
-        @app.route('/api/condo/<string:id>', methods=['PUT'])
-        def UpdateCondo(id):
+    try:
 
-            db = CondoUpdateFunction
+        if not request.json:
+            abort(400)
 
-            try:
+        event = {
+            'Id': id,
+            'Description' : request.json['Description'],
+            'Logo' : request.json['Logo'],
+            'Url' : request.json['Url'],
+            }
 
-                if not request.json:
-                    abort(400)
+        response = db.UpdateCondo(event, "")
 
-                event = {
-                    'Id': id,
-                    'Description' : request.json['Description'],
-                    'Logo' : request.json['Logo'],
-                    'Url' : request.json['Url'],
-                    }
+    except Exception:
+        print("Error - Metodo UpdateCondo")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-                response = db.UpdateCondo(event, "")
+    else:
+        return jsonify({"Condo": response}), 201
 
-            except Exception:
-                print("Error - Metodo UpdateCondo")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+#Eliminar un condominio
+@condoApi.route('/api/condo/<string:id>', methods=['DELETE'])
+def DeleteCondo(id):
 
-            else:
-                return jsonify({"Condo": response}), 201
+    db = CondoDeleteFunction
 
-        #Eliminar un condominio
-        @app.route('/api/condo/<string:id>', methods=['DELETE'])
-        def DeleteCondo(id):
+    try:
+        event = {"Id" : id}
+        response = db.DeleteCondoById(event, "")
 
-            db = CondoDeleteFunction
+    except Exception:
+        print("Error - Metodo DeleteCondo")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-            try:
-                event = {"Id" : id}
-                response = db.DeleteCondoById(event, "")
-
-            except Exception:
-                print("Error - Metodo DeleteCondo")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
-
-            else:
-                return jsonify({"Resultado" : "Condominio eliminado correctamente"}), 201
-
-        #Manejo de errores
-        @app.errorhandler(404)
-        def not_found(error):
-            return make_response(jsonify({"Error": "Datos no encontrados"}), 404)
-
-        #Correr el servidor
-        if __name__ == "CondoServices":
-            app.run(debug=True)
+    else:
+        return jsonify({"Resultado" : "Condominio eliminado correctamente"}), 201
