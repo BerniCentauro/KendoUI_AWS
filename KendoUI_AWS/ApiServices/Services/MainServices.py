@@ -3,6 +3,7 @@ from flask import abort
 from flask import make_response
 from flask import request
 from flask import url_for
+from flask_cors import CORS, cross_origin
 import traceback
 
 from UserServices import userApi
@@ -20,6 +21,9 @@ class MainServices:
         app.register_blueprint(userApi)
         app.register_blueprint(condoApi)
         app.register_blueprint(ffApi)
+
+        #CORS
+        CORS(app)
 
         #Ruta por default
         @app.route("/")

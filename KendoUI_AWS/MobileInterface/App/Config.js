@@ -1,3 +1,3 @@
 ﻿app.constant('Config', {
-    ApiHost: 'http://localhost:5000/'
+    ApiHost: 'http://localhost:5000'
 });
