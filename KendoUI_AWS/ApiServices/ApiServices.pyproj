@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,7 +6,7 @@
     <ProjectGuid>3062b26d-f478-4c60-b023-731314143768</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>ApiServices.py</StartupFile>
-    <SearchPath>Functions\;Scripts\;Services\</SearchPath>
+    <SearchPath>Scripts\;Services\;Functions\User\;Functions\Condo\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>ApiServices</Name>
@@ -26,6 +26,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Functions\" />
+    <Folder Include="Functions\Condo\" />
+    <Folder Include="Functions\User\" />
     <Folder Include="Scripts\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -33,6 +35,17 @@
     <Compile Include="ApiServices.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Functions\Condo\CondoDeleteFunction.py" />
+    <Compile Include="Functions\Condo\CondoGetAllFunction.py" />
+    <Compile Include="Functions\Condo\CondoGetByIdFunction.py" />
+    <Compile Include="Functions\Condo\CondoInsertFunction.py" />
+    <Compile Include="Functions\Condo\CondoUpdateFunction.py" />
+    <Compile Include="Functions\User\UserDeleteFunction.py" />
+    <Compile Include="Functions\User\UserGetAllFunction.py" />
+    <Compile Include="Functions\User\UserGetByIdFunction.py" />
+    <Compile Include="Functions\User\UserInsertFunction.py" />
+    <Compile Include="Functions\User\UserUpdateFunction.py" />
+    <Compile Include="Scripts\UserTable.py">
     <Compile Include="Functions\FincaFilialDeleteFunction.py" />
     <Compile Include="Functions\FincaFilialGetAllFunction.py" />
     <Compile Include="Functions\FincaFilialGetByIdFunction.py" />
@@ -42,6 +55,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Services\FincaFilialServices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\CondoServices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\MainServices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\UserServices.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\CondoTable.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
