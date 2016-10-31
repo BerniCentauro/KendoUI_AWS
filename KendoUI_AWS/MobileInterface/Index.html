@@ -32,7 +32,7 @@
                 <a href="#addFinca" data-align="right" kendo-mobile-back-button>Agregar</a>
             </kendo-mobile-nav-bar>
         </kendo-mobile-header>
-        <kendo-mobile-list-view data-source="source" >
+        <kendo-mobile-list-view data-source="source">
             <ul class="fincaItem" k-template>{{ dataItem.NumberProperty }}</ul>
         </kendo-mobile-list-view>
     </kendo-mobile-view>
@@ -65,9 +65,10 @@
                 <label>Estado</label>
                 <input class="k-textbox" type="text" ng-model="finca.Status" />
             </div>
-            <button class="k-button k-primary" type="button" ng-click="add()" >Agregar</button>
-        <a href="#user">Usuarios</a>
-        <a href="#condo">Condo</a>
+            <button class="k-button k-primary" type="button" ng-click="add()">Agregar</button>
+            <a href="#user">Usuarios</a>
+            <a href="#condo">Condo</a>
+        </div>
     </kendo-mobile-view>
 
     <!--Listar Usuarios-->
@@ -88,20 +89,20 @@
 
     <!--Agregar usuario-->
     <kendo-mobile-view id="addUser" ng-controller="UserController">
-        
+
         <kendo-mobile-header>
             <kendo-mobile-nav-bar>
                 <span kendo-view-title>Agregar Usuario</span>
             </kendo-mobile-nav-bar>
         </kendo-mobile-header>
-        
+
         <div class="container">
             <div class="form-control">
                 <label>Id de usuario:</label>
-                <input class="k-textbox" ng-model="user.Id" type="text"/>
-                <br/>
+                <input class="k-textbox" ng-model="user.Id" type="text" />
+                <br />
                 <label>Nombre de usuario:</label>
-                <input class="k-textbox" ng-model="user.Username" type="text"/>
+                <input class="k-textbox" ng-model="user.Username" type="text" />
                 <br />
                 <label>Email:</label>
                 <input class="k-textbox" ng-model="user.Email" type="text" />
@@ -120,20 +121,20 @@
     </kendo-mobile-view>
 
     <!-- Listar Condo -->
-    <kendo-mobile-view id="addfinca" ng-controller="CondoController">
+    <kendo-mobile-view id="condo" ng-controller="CondoController">
         <kendo-mobile-header>
             <kendo-mobile-nav-bar>
                 <span kendo-view-title>Condo</span>
-                <a href="#addfinca" data-align="right" kendo-mobile-back-button>Agregar</a>
+                <a href="#addCondo" data-align="right" kendo-mobile-back-button>Agregar</a>
             </kendo-mobile-nav-bar>
         </kendo-mobile-header>
         <kendo-mobile-list-view data-source="source">
-            <ul class="condoItem" k-template>{{dataItem.Descripcion}}</ul>
+            <ul class="condoItem" k-template>{{dataItem.Description}}</ul>
         </kendo-mobile-list-view>
     </kendo-mobile-view>
 
     <!--Agregar condominio-->
-    <kendo-mobile-view id="condo" ng-controller="CondoController">
+    <kendo-mobile-view id="addCondo" ng-controller="CondoController">
         <kendo-mobile-header>
             <kendo-mobile-nav-bar>
                 <span kendo-view-title>Agregar Condo</span>
@@ -157,7 +158,6 @@
                 <input class="k-textbox" ng-model="dataItem.Logo">
             </div>
             <button class="k-button k-primary" type="button" ng-click="add()">Add</button>
->>>>>>> origin/develop
         </div>
     </kendo-mobile-view>
 
@@ -174,11 +174,12 @@
     <script type="text/javascript" src="/App/Services/DataModel.js"></script>
 
     <script type="text/javascript" src="/App/Models/User.js"></script>
-	<script type="text/javascript" src="/App/Models/Condo.js"></script>
+    <script type="text/javascript" src="/App/Models/Condo.js"></script>
     <script type="text/javascript" src="/App/Models/Finca.js"></script>
 
     <script type="text/javascript" src="/App/Controllers/HomeController.js"></script>
     <script type="text/javascript" src="/App/Controllers/CondoController.js"></script>
-	<script type="text/javascript" src="/App/Controllers/UserController.js"></script>
+    <script type="text/javascript" src="/App/Controllers/UserController.js"></script>
+    <script type="text/javascript" src="/App/Controllers/FincaController.js"></script>
 </body>
 </html>
