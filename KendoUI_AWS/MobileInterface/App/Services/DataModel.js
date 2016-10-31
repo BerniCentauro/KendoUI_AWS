@@ -34,7 +34,7 @@
                 return $http.delete(url + '/' + this.Id);
             },
             save: function () {
-                if (this.Id) {
+                if (this.Exist) {
                     return $http.put(url + '/' + this.Id, this);
                 } else {
                     return $http.post(url, this);
