@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+﻿from flask import Flask, jsonify
 from flask import abort
 from flask import make_response
 from flask import request
@@ -7,6 +7,7 @@ import traceback
 
 from UserServices import userApi
 from CondoServices import condoApi
+from FincaFilialServices import ffApi
 
 class MainServices:
 
@@ -18,6 +19,7 @@ class MainServices:
         #Instanciar servicios
         app.register_blueprint(userApi)
         app.register_blueprint(condoApi)
+        app.register_blueprint(ffApi)
 
         #Ruta por default
         @app.route("/")

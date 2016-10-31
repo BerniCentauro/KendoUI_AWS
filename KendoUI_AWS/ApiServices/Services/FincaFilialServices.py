@@ -3,7 +3,7 @@ from flask import abort
 from flask import make_response
 from flask import request
 from flask import url_for
-from flask_httpauth import HTTPBasicAuth
+from flask import Blueprint
 import traceback
 
 import FincaFilialDeleteFunction
@@ -13,132 +13,115 @@ import FincaFilialInsertFunction
 import FincaFilialUpdateFunction
 import FincaFilialGetAllFunction
 
-class FincaFilialServices:
+ffApi = Blueprint("ffApi", __name__)
 
-    def runServices():
+#Insertar una finca filial nueva
+@ffApi.route('/api/fincafilial', methods=['POST'])
+def InsertNewFincaFilial():
 
-        #Instanciar flask
-        app = Flask(__name__)
+    db = FincaFilialInsertFunction
 
-        #Insertar una finca filial nueva
-        @app.route('/api/fincaFilial', methods=['POST'])
-        def InsertNewFincaFilial():
+    try:
 
-            db = FincaFilialInsertFunction
+        if not request.json or not 'Id' in request.json:
+            abort(400)
 
-            try:
+        event = {
+            'Id': request.json['Id'],
+            'Status' : request.json['Status'],
+            'NumberProperty' : request.json['NumberProperty'],
+            'IdCondominio' : request.json['IdCondominio'],
+            'IdUser' : request.json['IdUser']
+            }
 
-                if not request.json or not 'Id' in request.json:
-                    abort(400)
+        response = db.InsertNewFincaFilial(event, "")
 
-                event = {
-                    'Id': request.json['Id'],
-                    'Status' : request.json['Status'],
-                    'NumberProperty' : request.json['NumberProperty'],
-                    'IdCondominio' : request.json['IdCondominio'],
-                    'IdUser' : request.json['IdUser']
-                    }
+    except Exception:
+        print("Error - Metodo InsertNewFincaFilial")
+        traceback.print_exc()
+        return jsonify({"Resultado": "No se ha podido completar la transaccion"}), 201
 
-                response = db.InsertNewFincaFilial(event, "")
+    else:
+        return jsonify({"Resultado" : "Datos ingresados correctamente"}), 201
 
-            except Exception:
-                print("Error - Metodo InsertNewFincaFilial")
-                traceback.print_exc()
-                return jsonify({"Resultado": "No se ha podido completar la transaccion"}), 201
+#Obtener lista de finca Filial
+@ffApi.route('/api/fincafilial', methods=['GET'])
+def GetAllFincaFilial():
 
-            else:
-                return jsonify({"Resultado" : "Datos ingresados correctamente"}), 201
-
-        #Obtener lista de finca Filial
-        @app.route('/api/fincaFilial', methods=['GET'])
-        def GetAllFincaFilial():
-
-            db = FincaFilialGetAllFunction
+    db = FincaFilialGetAllFunction
             
-            try:
+    try:
                 
-                response = db.GetAllFincaFilial("", "")
+        response = db.GetAllFincaFilial("", "")
 
-            except Exception:
-                print("Error - Metodo GetAllFincaFilial")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+    except Exception:
+        print("Error - Metodo GetAllFincaFilial")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-            return jsonify({"FincaFilial" : response})
+    return jsonify({"FincaFilial" : response})
 
-        #Obtener una finca filial por Id
-        @app.route('/api/fincaFilial/<string:id>', methods=['GET'])
-        def GetById(id):
+#Obtener una finca filial por Id
+@ffApi.route('/api/fincafilial/<string:id>', methods=['GET'])
+def GetById(id):
 
-            #db = GetFincaFilialById
-            return jsonify({"FincaFilial" : "holi"})
+    db = FincaFilialGetByIdFunction
 
-            db = FincaFilialGetAllFunction
+    try:
 
-            try:
+        event = { "Id" : id }
+        response = db.GetFincaFilialById(event, "")
 
-                event = { "Id" : id }
-                response = db.GetFincaFilialById(event, "")
+    except Exception:
+        print("Error - Metodo GetById")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-            except Exception:
-                print("Error - Metodo GetById")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+    return jsonify({"FincaFilial" : response})
 
-            return jsonify({"FincaFilial" : response})
+#Actualizar una finca filial
+@ffApi.route('/api/fincafilial/<string:id>', methods=['PUT'])
+def UpdateFincaFilial(id):
 
-        #Actualizar una finca filial
-        @app.route('/api/fincaFilial/<string:id>', methods=['PUT'])
-        def UpdateFincaFilial(id):
+    db = FincaFilialUpdateFunction
 
-            db = FincaFilialUpdateFunction
+    try:
 
-            try:
+        if not request.json:
+            abort(400)
 
-                if not request.json:
-                    abort(400)
+        event = {
+            'Id': id,
+            'Status' : request.json['Status'],
+            'NumberProperty' : request.json['NumberProperty'],
+            'IdCondominio' : request.json['IdCondominio'],
+            'IdUser' : request.json['IdUser']
+            }
 
-                event = {
-                    'Id': request.json['Id'],
-                    'Status' : request.json['Status'],
-                    'NumberProperty' : request.json['NumberProperty'],
-                    'IdCondominio' : request.json['IdCondominio'],
-                    'IdUser' : request.json['IdUser']
-                    }
+        response = db.UpdateFincaFilial(event, "")
 
-                response = db.UpdateFincaFilial(event, "")
+    except Exception:
+        print("Error - Metodo actualizar finca Filial")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-            except Exception:
-                print("Error - Metodo actualizar finca Filial")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
+    else:
+        return jsonify({"FincaFilial": response}), 201
 
-            else:
-                return jsonify({"FincaFilial": response}), 201
+#Eliminar una finca filial
+@ffApi.route('/api/fincafilial/<string:id>', methods=['DELETE'])
+def DeleteFincaFilial(id):
 
-        #Eliminar una finca filial
-        @app.route('/api/fincaFilial/<string:id>', methods=['DELETE'])
-        def DeleteFincaFilial(id):
+    db = FincaFilialDeleteFunction
 
-            db = FincaFilialDeleteFunction
+    try:
+        event = {"Id" : id}
+        response = db.DeleteFincaFilialById(event, "")
 
-            try:
-                event = {"Id" : id}
-                response = db.DeleteFincaFilialById(event, "")
+    except Exception:
+        print("Error - Metodo borrar finca filial")
+        traceback.print_exc()
+        return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-            except Exception:
-                print("Error - Metodo borrar finca filial")
-                traceback.print_exc()
-                return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
-
-            else:
-                return jsonify({"Resultado" : "Finca filial eliminada correctamente"}), 201
-
-        #Manejo de errores
-        @app.errorhandler(404)
-        def not_found(error):
-            return make_response(jsonify({"Error": "Datos no encontrados"}), 404)
-
-        #Correr el servidor
-        if __name__ == "FincaFilialServices":
-            app.run(debug=True)
+    else:
+        return jsonify({"Resultado" : "Finca filial eliminada correctamente"}), 201

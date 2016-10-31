@@ -1,4 +1,4 @@
-import boto3
+﻿import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
 
@@ -10,7 +10,7 @@ def UpdateFincaFilial(event, context):
     try:
 
         response = table.update_item(Key = {"Id" : event["Id"]},
-            UpdateExpression = "Set Status = :valStatus, NumberProperty = :valNumberProperty, IdCondominio = :valIdCondominio, IdUser = :valIdUser",
+            UpdateExpression = "Set StatusFinca = :valStatus, NumberProperty = :valNumberProperty, IdCondominio = :valIdCondominio, IdUser = :valIdUser",
             ExpressionAttributeValues = {
                 ":valStatus": event["Status"],
                 ":valNumberProperty" : event["NumberProperty"],

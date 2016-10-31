@@ -41,18 +41,18 @@ class FincaFilialTable:
         try:
             table.put_item(Item = { 
                     'Id': '1',
-                    'Status' : 'true',
+                    'StatusFinca' : 'true',
                     'NumberProperty' : '12345',
                     'IdCondominio' : '1',
                     'IdUser' : '1'
                     })
 
             table.put_item(Item = { 
-                    'Id': '1',
-                    'Status' : 'true',
-                    'NumberProperty' : '12345',
+                    'Id': '2',
+                    'StatusFinca' : 'true',
+                    'NumberProperty' : '123456',
                     'IdCondominio' : '1',
-                    'IdUser' : '1'
+                    'IdUser' : '2'
                     })
 
         except Exception:
