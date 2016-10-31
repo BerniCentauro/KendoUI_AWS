@@ -59,10 +59,12 @@
   <ItemGroup>
     <Content Include="App\App.js" />
     <Content Include="App\Config.js" />
+    <Content Include="App\Controllers\FincaController.js" />
     <Content Include="App\Controllers\CondoController.js" />
     <Content Include="App\Controllers\HomeController.js" />
     <Content Include="App\Controllers\UserController.js" />
     <Content Include="App\Global.js" />
+    <Content Include="App\Models\Finca.js" />
     <Content Include="App\Models\Condo.js" />
     <Content Include="App\Models\User.js" />
     <Content Include="App\Services\DataModel.js" />
