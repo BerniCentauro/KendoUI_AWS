@@ -1,10 +1,41 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Prueba Hola Mundo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>CondoFacil Demo</title>
+
+    <!-- Styles -->
+    <link type="text/css" href="/Libs/KendoUI/styles/kendo.common.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Libs/KendoUI/styles/kendo.material.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Libs/KendoUI/styles/kendo.material.mobile.min.css" rel="stylesheet" />
 </head>
-<body>
-    <h1>Hola Mundo</h1>
+<body kendo-mobile-application ng-app="CondoFacil">
+
+    <!-- Home -->
+    <kendo-mobile-view id="home" ng-controller="HomeController" >
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <span kendo-view-title>CondoFacil</span>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+    </kendo-mobile-view>
+
+    <!-- Libs -->
+    <script type="text/javascript" src="/Libs/KendoUI/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/Libs/KendoUI/js/angular.min.js"></script>
+    <script type="text/javascript" src="/Libs/KendoUI/js/kendo.all.min.js"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="/App/App.js"></script>
+    <script type="text/javascript" src="/App/Config.js"></script>
+    <script type="text/javascript" src="/App/Global.js"></script>
+
+    <script type="text/javascript" src="/App/Services/DataModel.js"></script>
+
+    <script type="text/javascript" src="/App/Models/User.js"></script>
+
+    <script type="text/javascript" src="/App/Controllers/HomeController.js"></script>
+
 </body>
 </html>
