@@ -13,12 +13,14 @@
 <body kendo-mobile-application ng-app="CondoFacil">
 
     <!-- Home -->
-    <kendo-mobile-view id="home" ng-controller="HomeController" >
+    <kendo-mobile-view id="home" ng-controller="HomeController">
         <kendo-mobile-header>
             <kendo-mobile-nav-bar>
                 <span kendo-view-title>CondoFacil</span>
             </kendo-mobile-nav-bar>
         </kendo-mobile-header>
+        <a href="#user">Usuarios</a>
+        <a href="#condo">Condo</a>
         <a href="#finca">Finca</a>
     </kendo-mobile-view>
 
@@ -64,6 +66,98 @@
                 <input class="k-textbox" type="text" ng-model="finca.Status" />
             </div>
             <button class="k-button k-primary" type="button" ng-click="add()" >Agregar</button>
+        <a href="#user">Usuarios</a>
+        <a href="#condo">Condo</a>
+    </kendo-mobile-view>
+
+    <!--Listar Usuarios-->
+    <kendo-mobile-view id="user" ng-controller="UserController">
+
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <span kendo-view-title>Usuarios</span>
+                <a href="#addUser" data-align="right" kendo-mobile-back-button>Agregar</a>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <kendo-mobile-list-view data-source="source">
+            <ul class="fincaItem" k-template>{{ dataItem.Username }}</ul>
+        </kendo-mobile-list-view>
+
+    </kendo-mobile-view>
+
+    <!--Agregar usuario-->
+    <kendo-mobile-view id="addUser" ng-controller="UserController">
+        
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <span kendo-view-title>Agregar Usuario</span>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        
+        <div class="container">
+            <div class="form-control">
+                <label>Id de usuario:</label>
+                <input class="k-textbox" ng-model="user.Id" type="text"/>
+                <br/>
+                <label>Nombre de usuario:</label>
+                <input class="k-textbox" ng-model="user.Username" type="text"/>
+                <br />
+                <label>Email:</label>
+                <input class="k-textbox" ng-model="user.Email" type="text" />
+                <br />
+                <label>Contraseña:</label>
+                <input class="k-textbox" ng-model="user.Password" type="text" />
+                <br />
+                <label>Teléfono:</label>
+                <input class="k-textbox" ng-model="user.Phone" type="text" />
+                <br />
+                <label>Identificación:</label>
+                <input class="k-textbox" ng-model="user.Identification" type="text" />
+            </div>
+            <button class="k-button k-primary" type="button" ng-click="add()">Agregar</button>
+        </div>
+    </kendo-mobile-view>
+
+    <!-- Listar Condo -->
+    <kendo-mobile-view id="addfinca" ng-controller="CondoController">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <span kendo-view-title>Condo</span>
+                <a href="#addfinca" data-align="right" kendo-mobile-back-button>Agregar</a>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <kendo-mobile-list-view data-source="source">
+            <ul class="condoItem" k-template>{{dataItem.Descripcion}}</ul>
+        </kendo-mobile-list-view>
+    </kendo-mobile-view>
+
+    <!--Agregar condominio-->
+    <kendo-mobile-view id="condo" ng-controller="CondoController">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <span kendo-view-title>Agregar Condo</span>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <div class="container">
+            <div class="form-controll">
+                <label>Descripcion</label>
+                <input class="k-textbox" ng-model="dataItem.Descripcion">
+            </div>
+            <div class="form-controll">
+                <label>Id</label>
+                <input class="k-textbox" ng-model="dataItem.Id">
+            </div>
+            <div class="form-controll">
+                <label>URL</label>
+                <input class="k-textbox" ng-model="dataItem.PageUrl">
+            </div>
+            <div class="form-controll">
+                <label>Logo</label>
+                <input class="k-textbox" ng-model="dataItem.Logo">
+            </div>
+            <button class="k-button k-primary" type="button" ng-click="add()">Add</button>
+>>>>>>> origin/develop
         </div>
     </kendo-mobile-view>
 
@@ -80,10 +174,11 @@
     <script type="text/javascript" src="/App/Services/DataModel.js"></script>
 
     <script type="text/javascript" src="/App/Models/User.js"></script>
+	<script type="text/javascript" src="/App/Models/Condo.js"></script>
     <script type="text/javascript" src="/App/Models/Finca.js"></script>
 
     <script type="text/javascript" src="/App/Controllers/HomeController.js"></script>
-    <script type="text/javascript" src="/App/Controllers/FincaController.js"></script>
-
+    <script type="text/javascript" src="/App/Controllers/CondoController.js"></script>
+	<script type="text/javascript" src="/App/Controllers/UserController.js"></script>
 </body>
 </html>
