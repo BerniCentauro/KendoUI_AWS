@@ -47,7 +47,7 @@
     </kendo-mobile-view>
 
     <!-- Listar fincas filiales -->
-    <kendo-mobile-view id="finca" ng-controller="FincaController">
+    <kendo-mobile-view id="finca" ng-controller="FincaController" ng-init="init()">
 
         <!--Navbar-->
         <kendo-mobile-header>
@@ -108,7 +108,7 @@
     </kendo-mobile-view>
 
     <!--Listar Usuarios-->
-    <kendo-mobile-view id="user" ng-controller="UserController">
+    <kendo-mobile-view id="user" ng-controller="UserController" ng-init="init()">
 
         <!--Navbar-->
         <kendo-mobile-header>
@@ -174,7 +174,7 @@
     </kendo-mobile-view>
 
     <!-- Listar Condo -->
-    <kendo-mobile-view id="condo" ng-controller="CondoController">
+    <kendo-mobile-view id="condo" ng-controller="CondoController" ng-init="init()">
 
         <!--Navbar-->
         <kendo-mobile-header>
@@ -201,7 +201,7 @@
                 <a href="#condo" data-align="left" kendo-mobile-back-button>Volver</a>
             </kendo-mobile-nav-bar>
         </kendo-mobile-header>
-        
+
         <!--Formulario para agregar un condominio nuevo-->
         <div class="container">
             <div class="form-control">
@@ -221,7 +221,7 @@
                 <input class="k-textbox" ng-model="condo.Logo">
             </div>
         </div>
-        
+
         <!--Botón agregar-->
         <div class="nav-button-container">
             <button class="k-button add-button" type="button" ng-click="add()">Agregar</button>

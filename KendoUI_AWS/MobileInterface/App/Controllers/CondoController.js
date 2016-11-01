@@ -27,17 +27,13 @@
             }
         };
 
-        //-----------------------
-        //Scope
-        //-----------------------
-        $scope.condo = new Condo();
-        $scope.source = new kendo.data.DataSource(sourceOptions);
-
         //------------------------
         //functions
         //------------------------
-        $scope.init = function () {
 
+        $scope.init = function () {
+            $scope.condo = new Condo();
+            $scope.source = new kendo.data.DataSource(sourceOptions);
         }
 
         $scope.add = function () {

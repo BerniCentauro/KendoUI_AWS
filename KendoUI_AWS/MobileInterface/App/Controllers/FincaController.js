@@ -30,18 +30,12 @@
         };
 
         // ---------------------------
-        // Scope
-        // ---------------------------
-
-        $scope.finca = new Finca();
-        $scope.source = new kendo.data.DataSource(sourceOptions);
-
-        // ---------------------------
         // Functions
         // ---------------------------
 
         $scope.init = function () {
-
+            $scope.finca = new Finca();
+            $scope.source = new kendo.data.DataSource(sourceOptions);
         }
 
         $scope.add = function () {

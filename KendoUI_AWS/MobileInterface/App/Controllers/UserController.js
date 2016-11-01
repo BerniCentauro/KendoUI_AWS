@@ -5,6 +5,7 @@
         var sourceOptions = {
             transport: {
                 read: function (options) {
+                    $scope.user = new User();
                     $scope.user.get().then(function (response) {
                             //Success
                             if (response.status === 200) {
@@ -27,13 +28,10 @@
             }
         };
 
-        //Scope
-        $scope.user = new User();
-        $scope.source = new kendo.data.DataSource(sourceOptions);
-        
         //Functions
-        $scope.init = function() {
-            
+        $scope.init = function () {
+            $scope.user = new User();
+            $scope.source = new kendo.data.DataSource(sourceOptions);
         }
 
         $scope.add = function() {
