@@ -8,7 +8,7 @@
                 read: function (options) {
                     $scope.condo.get().then(function (response) {
                         //success
-                        if (response.status == 200) {
+                        if (response.status === 200) {
                             var data = {
                                 items: response.data.Condos.Items,
                                 total: response.data.Condos.Count
@@ -23,7 +23,7 @@
             },
             schema: {
                 data: 'items',
-                total: 'total',
+                total: 'total'
             }
         };
 
