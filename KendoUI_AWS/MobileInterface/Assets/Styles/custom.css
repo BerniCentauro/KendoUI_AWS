@@ -1,0 +1,67 @@
+﻿body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/*Estilos personalizados*/
+.nav-button {
+    width: 80%;
+    height: 40px;
+    margin: 5px 10px 5px 10px;
+    padding-top: 8px;
+    background-color: #939fdf;
+    color: #ffffff !important;
+    border: 0;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+}
+.nav-button:hover {
+    background-color: #c4cbf2;
+}
+
+.nav-button-container {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.km-list {
+    color: #4d4d4d !important;
+    border: 1px solid #cccccc !important;
+}
+
+.form-control {
+    margin: 10px;
+    display: inline-flex;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.form-control div {
+    width: 150px;
+    height: 30px;
+    padding-top: 8px;
+    margin-right: 5px;
+}
+
+.add-button {
+    width: 80%;
+    height: 40px;
+    margin: 5px 10px 5px 10px;
+    background-color: #939fdf;
+    color: #ffffff !important;
+    border: 0;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+}
+.add-button:hover {
+    background-color: #c4cbf2;
+}
+
+
+

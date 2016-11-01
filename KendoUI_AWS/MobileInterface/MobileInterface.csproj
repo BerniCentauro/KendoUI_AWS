@@ -68,6 +68,7 @@
     <Content Include="App\Models\Condo.js" />
     <Content Include="App\Models\User.js" />
     <Content Include="App\Services\DataModel.js" />
+    <Content Include="Assets\Styles\custom.css" />
     <Content Include="Libs\KendoUI\js\cultures\kendo.culture.af-ZA.min.js.map" />
     <Content Include="Libs\KendoUI\js\cultures\kendo.culture.af.min.js.map" />
     <Content Include="Libs\KendoUI\js\cultures\kendo.culture.am-ET.min.js.map" />
@@ -1750,7 +1751,6 @@
   <ItemGroup>
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Scripts\" />
-    <Folder Include="Assets\Styles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
