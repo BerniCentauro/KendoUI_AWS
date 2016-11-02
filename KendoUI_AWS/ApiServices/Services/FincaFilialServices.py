@@ -59,7 +59,7 @@ def GetAllFincaFilial():
         traceback.print_exc()
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-    return jsonify({"FincaFilial" : response})
+    return jsonify(response)
 
 #Obtener una finca filial por Id
 @ffApi.route('/api/fincafilial/<string:id>', methods=['GET'])
@@ -77,7 +77,7 @@ def GetById(id):
         traceback.print_exc()
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-    return jsonify({"FincaFilial" : response})
+    return jsonify(response)
 
 #Actualizar una finca filial
 @ffApi.route('/api/fincafilial/<string:id>', methods=['PUT'])
@@ -106,7 +106,7 @@ def UpdateFincaFilial(id):
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
     else:
-        return jsonify({"FincaFilial": response}), 201
+        return jsonify(response), 201
 
 #Eliminar una finca filial
 @ffApi.route('/api/fincafilial/<string:id>', methods=['DELETE'])

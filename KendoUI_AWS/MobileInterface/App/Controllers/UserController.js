@@ -7,19 +7,28 @@
                 read: function (options) {
                     $scope.user = new User();
                     $scope.user.get().then(function (response) {
-                            //Success
-                            if (response.status === 200) {
-                                var data = {
-                                    items: response.data.Users.Items,
-                                    total: response.data.Users.Count
-                                }
+                        //Success
+                        if (response.status === 200) {
 
-                                options.success(data);
+                            var data;
+
+                            if (response.data.Count > 0) {
+                                data = {
+                                    items: response.data.Items,
+                                    total: response.data.Count
+                                }
+                            } else {
+                                data = {
+                                    items: [],
+                                    total: 0
+                                }
                             }
-                        },
-                        function (response) {
-                            //Error
-                        });
+
+                            options.success(data);
+                        }
+                    }, function (response) {
+                        // TODO: Handler error
+                    });
                 }
             },
             schema: {
@@ -34,22 +43,22 @@
             $scope.source = new kendo.data.DataSource(sourceOptions);
         }
 
-        $scope.add = function() {
+        $scope.add = function () {
 
-            $scope.user.save().then(function() {
+            $scope.user.save().then(function () {
                 console.info('Success');
-            }, function() {
+            }, function () {
                 console.error('Error');
             });
 
         }
 
-        $scope.edit = function() {
-            
+        $scope.edit = function () {
+
         }
 
-        $scope.delete = function() {
-            
+        $scope.delete = function () {
+
         }
     }
 ]);

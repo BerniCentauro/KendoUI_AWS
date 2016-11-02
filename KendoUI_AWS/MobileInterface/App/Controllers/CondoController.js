@@ -9,15 +9,24 @@
                     $scope.condo.get().then(function (response) {
                         //success
                         if (response.status === 200) {
-                            var data = {
-                                items: response.data.Condos.Items,
-                                total: response.data.Condos.Count
+                            var data;
+
+                            if (response.data.Count > 0) {
+                                data = {
+                                    items: response.data.Items,
+                                    total: response.data.Count
+                                }
+                            } else {
+                                data = {
+                                    items: [],
+                                    total: 0
+                                }
                             }
 
                             options.success(data);
                         }
                     }, function (response) {
-
+                        // TODO: Handler error
                     });
                 }
             },

@@ -57,7 +57,7 @@ def GetAllCondos():
         traceback.print_exc()
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-    return jsonify({"Condos" : response})
+    return jsonify(response)
 
 #Obtener un condominio por Id
 @condoApi.route('/api/condo/<string:id>', methods=['GET'])
@@ -75,7 +75,7 @@ def GetById(id):
         traceback.print_exc()
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-    return jsonify({"Condo" : response})
+    return jsonify(response)
 
 #Actualizar un usuario
 @condoApi.route('/api/condo/<string:id>', methods=['PUT'])
@@ -103,7 +103,7 @@ def UpdateCondo(id):
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
     else:
-        return jsonify({"Condo": response}), 201
+        return jsonify(response), 201
 
 #Eliminar un condominio
 @condoApi.route('/api/condo/<string:id>', methods=['DELETE'])
