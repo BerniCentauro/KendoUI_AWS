@@ -10,10 +10,19 @@
                 read: function (options) {
                     $scope.finca.get().then(function (response) {
                         // Success
-                        if(response.status == 200) {
-                            var data = {
-                                items: response.data.FincaFilial.Items,
-                                total: response.data.FincaFilial.Count
+                        if (response.status === 200) {
+                            var data;
+
+                            if (response.data.Count > 0) {
+                                data = {
+                                    items: response.data.Items,
+                                    total: response.data.Count
+                                }
+                            } else {
+                                data = {
+                                    items: [],
+                                    total: 0
+                                }
                             }
 
                             options.success(data);

@@ -59,7 +59,7 @@ def GetAllUsers():
         traceback.print_exc()
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-    return jsonify({"Users" : response})
+    return jsonify(response)
 
 #Obtener un usuario por Id
 @userApi.route('/api/user/<string:id>', methods=['GET'])
@@ -77,7 +77,7 @@ def GetById(id):
         traceback.print_exc()
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
-    return jsonify({"User" : response})
+    return jsonify(response)
 
 #Actualizar un usuario
 @userApi.route('/api/user/<string:id>', methods=['PUT'])
@@ -107,7 +107,7 @@ def UpdateUser(id):
         return jsonify({"Error": "No se ha podido completar la transaccion"}), 201
 
     else:
-        return jsonify({"User": response}), 201
+        return jsonify(response), 201
 
 #Eliminar un usuario
 @userApi.route('/api/user/<string:id>', methods=['DELETE'])
