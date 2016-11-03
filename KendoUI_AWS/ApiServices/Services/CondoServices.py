@@ -22,11 +22,10 @@ def InsertNewCondo():
 
     try:
 
-        if not request.json or not 'Id' in request.json:
+        if not request.json or not 'Description' in request.json:
             abort(400)
 
         event = {
-            'Id': request.json['Id'],
             'Description' : request.json['Description'],
             'Logo' : request.json['Logo'],
             'Url' : request.json['Url']

@@ -1,4 +1,5 @@
-﻿import boto3
+﻿import uuid
+import boto3
 from boto3.dynamodb.conditions import Key, Attr
 from botocore.exceptions import ClientError
 
@@ -10,7 +11,7 @@ def InsertNewFincaFilial(event, context):
     try:
 
         table.put_item(Item = { 
-                    'Id': event['Id'],
+                    'Id': str(uuid.uuid4()),
                     'StatusFinca' : event['Status'],
                     'NumberProperty' : event['NumberProperty'],
                     'IdCondominio' : event['IdCondominio'],

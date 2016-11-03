@@ -22,11 +22,10 @@ def InsertNewUser():
 
     try:
 
-        if not request.json or not 'Id' in request.json:
+        if not request.json or not 'Username' in request.json:
             abort(400)
 
         event = {
-            'Id': request.json['Id'],
             'Email' : request.json['Email'],
             'Password' : request.json['Password'],
             'Username' : request.json['Username'],
