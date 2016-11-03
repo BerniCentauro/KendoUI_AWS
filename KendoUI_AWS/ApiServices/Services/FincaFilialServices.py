@@ -23,11 +23,10 @@ def InsertNewFincaFilial():
 
     try:
 
-        if not request.json or not 'Id' in request.json:
+        if not request.json or not 'NumberProperty' in request.json:
             abort(400)
 
         event = {
-            'Id': request.json['Id'],
             'Status' : request.json['Status'],
             'NumberProperty' : request.json['NumberProperty'],
             'IdCondominio' : request.json['IdCondominio'],
